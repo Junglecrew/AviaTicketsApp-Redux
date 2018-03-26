@@ -1,0 +1,372 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+@import './media.scss';
+@import './preloader.scss';
+@import './fontawesome-all.min.scss';
+
+* {
+  font-family: 'Montserrat', sans-serif;
+}
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.App-header {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
+}
+
+.App-title {
+  font-size: 1.5em;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+.flightsList-enter {
+	opacity: 0.01;
+}
+
+.flightsList-enter.flightsList-enter-active {
+	opacity: 1;
+	transition: opacity 500ms ease-in;
+}
+
+.flightsList-appear {
+	opacity: 0.01;
+}
+
+.flightsList-appear.flightsList-appear-active {
+	opacity: 1;
+	transition: opacity 1000ms ease-in;
+}
+
+.flightsList-leave {
+	opacity: 1;
+}
+
+.flightsList-leave.flightsList-leave-active {
+	opacity: 0.01;
+	transition: opacity 300ms ease-in;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  background-color: #F3F7FA;
+}
+
+li {
+  list-style-type: none;
+}
+
+.main-title {
+  margin-top: 100px;
+}
+
+.container {
+  display: flex;
+  width: 1700px;
+  max-width: 95%;
+  margin: 100px auto;
+  @include tablets() {
+    flex-direction: column;
+  }
+
+}
+
+.ticket {
+  background-color: #fff;
+  height: 250px;
+  display: flex;
+  margin-bottom:40px;
+  -webkit-box-shadow: 13px 12px 19px -8px rgba(199,199,199,0.58);
+  -moz-box-shadow: 13px 12px 19px -8px rgba(199,199,199,0.58);
+  box-shadow: 13px 12px 19px -8px rgba(199,199,199,0.58);
+}
+
+.ticket-info {
+
+  border-right: 1px solid rgba(0, 0 , 0 , .1) ;
+  width: 33%;
+  &__logo {
+    margin: 0 auto;
+    margin-top: 10px;
+    width: 80%;
+    height: 40%;
+    background-image: url('../images/logo_aeroflot.png');
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat
+  }
+  &__price {
+    height: 40%;
+    margin: 10px 0 ;
+    :hover {
+      background-color: #FF6D00;
+      transition: .5s;
+    }
+
+  }
+  &__buy {
+    background-color: orange;
+    transition: .5s;
+    border-radius: 2px;
+    outline: none;
+    border:none;
+    width: 80%;
+    height: 100%;
+    font-size: 16px;
+    cursor: pointer;
+
+  }
+}
+
+.ticket-info__price-inrub {
+  font-weight: bold;
+  font-size: 22px;
+  @include tablets() {
+    font-size: 16px;
+  }
+}
+
+.ticket-details {
+  width: 66%;
+  margin: 10px auto;
+  font-size: 20px;
+  display: flex;
+  justify-content: space-around;
+  @include tablets() {
+    font-size: initial;
+    flex-direction: column;
+  }
+  
+}
+
+
+.ticket-details-departure {
+  height: 70%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  @include tablets() {
+    &:after{
+      content: "";
+      display: block;
+      border-bottom: 1px solid rgba(0, 0 , 0 , .1);
+      width: 60%;
+      margin: 5px auto;
+    }
+  }
+  &__time {
+    font-size: 30px;
+  }
+  &__date {
+    font-size: 12px;
+  }
+  &__origin-name {
+    font-weight: bold;
+  }
+}
+
+.ticket-details__stops {
+  font-size: 12px;
+  @include tablets() {
+    &:after{
+      content: "";
+      display: block;
+      border-bottom: 1px solid rgba(0, 0 , 0 , .1);
+      width: 60%;
+      margin: 5px auto;
+    }
+  }
+}
+
+.ticket-details-arrival {
+  height: 70%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  &__time {
+    font-size: 30px;
+  }
+  &__date {
+    font-size: 12px;
+  }
+  &__destination-name {
+    font-weight: bold;
+  }
+}
+
+.stops-filter {
+  margin: 20px auto;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  &__item {
+    text-align: left;
+    margin-bottom: 10px;
+  }
+}
+
+
+.flights-list {
+  width: 85%;
+  max-width: 95%;
+  margin:0 auto;
+  @include tablets() {
+    width: 95%;
+  }
+}
+
+.sidebar {
+  background-color: #fff;
+  height: auto;
+  -webkit-box-shadow: 13px 12px 19px -8px rgba(199,199,199,0.58);
+  -moz-box-shadow: 13px 12px 19px -8px rgba(199,199,199,0.58);
+  box-shadow: 13px 12px 19px -8px rgba(199,199,199,0.58);
+  margin-right: 10px;
+  margin-bottom: 10px;
+  height: 100%;
+  &__sort {
+    text-align: left;
+  }
+  &__form-sort {
+    margin-top: 10px;
+    
+  }
+  &__title {
+    text-align: center;
+    font-weight: bold;
+    margin: 10px;
+  }
+  @include tablets() {
+    margin: 10px auto;
+  }
+}
+
+
+
+.checkbox {
+  display: inline-block;
+  cursor: pointer;
+  position: relative;
+
+
+  span {
+    display: inline-block;
+    position: relative;
+    background-color: transparent;
+    width: 25px;
+    height: 25px;
+    transform-origin: center;
+    border: 2px solid orange;
+    border-radius: 50%;
+    vertical-align: -6px;
+    margin-right: 10px;
+    transition: background-color 150ms 200ms, transform 350ms cubic-bezier(.78,-1.22,.17,1.89); // custom ease effect for bouncy animation
+
+// Now we'll create the "tick" using pseudo elements - those will be basically two lines that will be rotated to form the "tick"
+
+  &:before {
+    content: "";
+    width: 0px;
+    height: 2px;
+    border-radius: 2px; // so that the tick has nice rounded look
+    background: orange;
+    position: absolute;
+    transform: rotate(45deg);
+    top: 13px; // you'll need to experiment with placement depending on the dimensions you've chosen
+    left: 9px; // you'll need to experiment with placement depending on the dimensions you've chosen
+    transition: width 50ms ease 50ms;
+    transform-origin: 0% 0%;
+  }
+
+  &:after {
+    content: "";
+    width: 0;
+    height: 2px;
+    border-radius: 2px; // so that the tick has nice rounded look
+    background: orange;
+    position: absolute;
+    transform: rotate(305deg);
+    top: 16px; // you'll need to experiment with placement depending on the dimensions you've chosen
+    left: 10px; // you'll need to experiment with placement depending on the dimensions you've chosen
+    transition: width 50ms ease;
+    transform-origin: 0% 0%;
+  }
+}
+// Time to add some life to it
+
+&:hover {
+  span {
+    &:before {
+      width: 5px;
+      transition: width 100ms ease;
+    }
+    
+    &:after {
+      width: 10px;
+      transition: width 150ms ease 100ms;
+    }
+  }
+}
+}
+
+input[type="checkbox"] {
+  display: none; // hide the system checkbox
+
+
+&:checked {
+  + .checkbox {
+    span {
+      background-color: orange;
+      transform: scale(1.25); // enlarge the box
+      
+      &:after {
+        width: 10px;
+        background: #fff;
+        transition: width 150ms ease 100ms; // enlarge the tick
+      }
+      
+      &:before {
+        width: 5px;
+        background: #fff;
+        transition: width 150ms ease 100ms; // enlarge the tick
+      }
+    }
+    
+    &:hover { // copy the states for onMouseOver to avoid flickering
+      span {
+        background-color: orange;
+        transform: scale(1.25); // enlarge the box
+
+        &:after {
+          width: 10px;
+          background: #fff;
+          transition: width 150ms ease 100ms; // enlarge the tick
+        }
+
+        &:before {
+          width: 5px;
+          background: #fff;
+          transition: width 150ms ease 100ms; // enlarge the tick
+        }
+      }  
+    }
+  }
+}
+}

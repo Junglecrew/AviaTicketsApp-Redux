@@ -1,0 +1,9 @@
+$tablets: 768px;
+$phones: 30rem;
+
+@mixin tablets {
+  @media screen and (max-width: $tablets) {
+    @content;
+  }
+}
+
