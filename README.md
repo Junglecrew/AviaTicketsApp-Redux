@@ -1,7 +1,7 @@
 ﻿# Made with React+Redux
 
 ## Live Demo
-## https://aviaticketssimple.herokuapp.com/"# AviaTicketsApp-Redux" 
+## https://aviatickets-redux.herokuapp.com 
 
 ## Для запуска на локальной машине:
 1. clone this repository
