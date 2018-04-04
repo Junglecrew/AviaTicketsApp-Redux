@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Route, withRouter } from 'react-router-dom';
 import {LOAD_TICKETS_FROM_API_SUCCESS} from './constants'
 import './styles/app.scss';
+import About from './components/About'
 import MainContent from './components/MainContent'
+import Header from './components/Header/'
 import store from './store'
 
 export class App extends Component {
@@ -17,32 +20,33 @@ export class App extends Component {
     </div>
     )
   }
+   
   
   componentDidMount() {
-    fetch('./tickets.json')
+    fetch('http://5abd3a30fd24f60014af8345.mockapi.io/tickets')
     .then(response => response.json())
-    .then(data => {
-      setTimeout(() => {
-        store.dispatch({
-          type: LOAD_TICKETS_FROM_API_SUCCESS,
-          payload: {data, isLoading: false}
-        })
-      },3000
-    )}
-    )
+    .then(data => {{
+      store.dispatch({
+         type: LOAD_TICKETS_FROM_API_SUCCESS,
+         payload: {data, isLoading: false}
+       })
+      }
+    })
   }
 
   render() {
     const {tickets, isLoading} = this.props
     return (
       <div className="App">
-        {!isLoading && <MainContent tickets = {tickets}/>}
-        {isLoading && this.getLoader()}
+        <Header />
+          <Route path="/about" component={About}/>
+          {!isLoading && <Route exact path='/tickets' render={(props) =>
+            <MainContent {...props} tickets = {tickets}/>} /> }        
+          {/* {!isLoading && <MainContent tickets = {tickets}/>} */}
+          {/* {isLoading && this.getLoader()} */}
       </div>
     );
   }
-
-  //Имитируем получение json файла от сервера из БД, для наглядности используем setTimeout
 
 }
 
@@ -53,4 +57,4 @@ const mapStateToProps = state => ({
 
 
 
-export default connect(mapStateToProps)(App);
+export default withRouter(connect(mapStateToProps)(App));

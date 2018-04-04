@@ -14,7 +14,7 @@ class MainContent extends Component {
 	constructor(props) {
     super(props);
 		this.state = {
-			stops: [], //Можно перенести в  store
+			stops: [], //Можно перенести в store
 			selectedSort: 'By price' //Можно перенести в store
 		};
 	}
